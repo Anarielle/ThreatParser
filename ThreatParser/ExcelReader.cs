@@ -32,12 +32,12 @@ namespace ThreatParser
 
                 if (worksheet == null)
                 {
-                    MessageBox.Show($"Не удалось загрузить файл.\nПожалуйста перезапустите приложение и " +
-                        $"попробуйте снова", "Ошибка чтения файла", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Не удалось прочитать файл.\nПожалуйста загрузите файл заново или " +
+                        $"укажите директорию к другой копии файла", "Ошибка чтения файла", MessageBoxButton.OK, MessageBoxImage.Error);   
                 }
                 else
                 {
-                    for (int i = 3; i <= 224; i++)
+                    for (int i = 3; i <= worksheet.Dimension.End.Row; i++)
                     {
                         for (int j = 1; j <= 8; j++)
                         {

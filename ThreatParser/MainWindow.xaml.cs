@@ -30,9 +30,10 @@ namespace ThreatParser
 
         public MainWindow()
         {
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;            
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             downloadFile.Show();
             Hide();
+            
             InitializeComponent();
         }
 
@@ -51,6 +52,7 @@ namespace ThreatParser
                     MessageBox.Show($"Не удалось обновить файл.\nВозможно проблемы с подключением к интернету или с доступом к сайту." +
                         $"\nЕсли у вас открыт текущий файл Excel, пожалуйста закройте его и повторите попытку",
                         "Ошибка обновления файла", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
             }
 
@@ -149,7 +151,7 @@ namespace ThreatParser
                 downloadFile.Hide();
             }
 
-            page = 1;            
+            page = 1;
         }
 
         public void ChangePage()
@@ -201,7 +203,7 @@ namespace ThreatParser
 
         private void bForward_Click(object sender, RoutedEventArgs e)
         {
-            if (cbPages.SelectedIndex == 0 && page <= threats.Count/20)
+            if (cbPages.SelectedIndex == 0 && page <= threats.Count / 20)
             {
                 if (page * 20 + 20 >= threats.Count)
                 {
@@ -242,7 +244,7 @@ namespace ThreatParser
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, 60);
                 }
                 page++;
-            }            
+            }
         }
 
         private void bBack_Click(object sender, RoutedEventArgs e)
@@ -252,7 +254,7 @@ namespace ThreatParser
                 page--;
                 if (cbPages.SelectedIndex == 0)
                 {
-                    ThreatsGrid.ItemsSource = threats.GetRange((page-1) * 20, 20);
+                    ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 20, 20);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 20, 60);
                 }
                 if (cbPages.SelectedIndex == 1)
@@ -266,6 +268,11 @@ namespace ThreatParser
                     ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 60, 60);
                 }
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
