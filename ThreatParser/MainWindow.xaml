@@ -1,0 +1,38 @@
+﻿<Window x:Class="ThreatParser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThreatParser"
+        mc:Ignorable="d"
+        Title="Threat Parser" Height="450" Width="800" MinWidth="310" MinHeight="300">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ColumnWidth="Auto" IsReadOnly="True" x:Name="ThreatsGrid"  Grid.ColumnSpan="2" Margin="0,0,0,45" MouseDoubleClick="ThreatsGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Идентификатор УБИ" Binding="{Binding Id}" MinWidth="130">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование УБИ" Binding="{Binding Name}" MinWidth="120">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="bUpdate" Content="Обновить данные" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Width="120" Click="bUpdate_Click" />
+        <ComboBox x:Name="cbPages" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="60" Height="20" IsReadOnly="True" SelectedIndex="0" SelectionChanged="cbPages_SelectionChanged">
+            <TextBlock>20</TextBlock>
+            <TextBlock>40</TextBlock>
+            <TextBlock>60</TextBlock>
+        </ComboBox>
+
+        <Button x:Name="bSave" Content="Сохранить" HorizontalAlignment="Left" Margin="140,0,0,10" VerticalAlignment="Bottom" Width="70" Click="bSave_Click"/>
+
+    </Grid>
+</Window>
