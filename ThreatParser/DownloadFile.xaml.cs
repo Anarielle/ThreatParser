@@ -69,7 +69,7 @@ namespace ThreatParser
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show($"Не удалось загрузить файл. Проверьте подключение к интернету",
+                    MessageBox.Show($"Не удалось загрузить файл. Возможно проблемы с подключением к интернету или с доступом к сайту",
                         "Ошибка загрузки файла", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }            

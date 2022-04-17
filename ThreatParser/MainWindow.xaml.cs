@@ -200,22 +200,48 @@ namespace ThreatParser
 
         private void bForward_Click(object sender, RoutedEventArgs e)
         {
-            if (cbPages.SelectedIndex == 0)
+            if (cbPages.SelectedIndex == 0 && page <= threats.Count/20)
             {
-                ThreatsGrid.ItemsSource = threats.GetRange(page * 20, 20);
-                ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, 60);
+                if (page * 20 + 20 >= threats.Count)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(page * 20, threats.Count - page * 20);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, threats.Count - page * 20);
+                }
+                else
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(page * 20, 20);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, 20);
+                }
+                page++;
             }
-            if (cbPages.SelectedIndex == 1)
+            if (cbPages.SelectedIndex == 1 && page <= threats.Count / 40)
             {
-                ThreatsGrid.ItemsSource = threats.GetRange(page * 40, 40);
-                ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, 40);
+                if (page * 40 + 40 > threats.Count)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(page * 40, threats.Count - page * 40);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, threats.Count - page * 40);
+                }
+                else
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(page * 40, 40);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, 40);
+                }
+                page++;
             }
-            if (cbPages.SelectedIndex == 2)
+            if (cbPages.SelectedIndex == 2 && page <= threats.Count / 60)
             {
-                ThreatsGrid.ItemsSource = threats.GetRange(page * 60, 60);
-                ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, 60);
-            }
-            page++;
+                if (page * 60 + 60 > threats.Count)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(page * 60, threats.Count - page * 60);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, threats.Count - page * 60);
+                }
+                else
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(page * 60, 60);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, 60);
+                }
+                page++;
+            }            
         }
 
         private void bBack_Click(object sender, RoutedEventArgs e)
