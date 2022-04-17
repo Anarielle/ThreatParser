@@ -30,8 +30,8 @@ namespace ThreatParser
         public MainWindow()
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            ExcelReader.UploadFile();
             InitializeComponent();
-            // ExcelReader.UploadFile(); 
         }
 
         private void bUpdate_Click(object sender, RoutedEventArgs e)
@@ -108,31 +108,22 @@ namespace ThreatParser
             if (changes.Count != 0)
             {
                 MessageBox.Show($"Обновление прошло успешно!!!\nОбновлено {changes.ToHashSet().Count} записей!");
+                ListOfChanges listOfChanges = new ListOfChanges();
+                listOfChanges.listBoxChanges.ItemsSource = changes;
+                listOfChanges.Show();
+
+                threats = threatsUpdate;
+                ThreatsGrid.ItemsSource = threats;
+                ThreatsGridDetailed.ItemsSource = threats;
             }
             else
             {
                 MessageBox.Show($"Обновление не требуется, у вас свежие данные.\nОбновлено {changes.ToHashSet().Count} записей!");
             }
-            foreach (var change in changes)
-            {
-                MessageBox.Show(change);
-            }
-
-            threats = threatsUpdate;
-            ThreatsGrid.ItemsSource = threats;
-            ThreatsGridDetailed.ItemsSource = threats;
-        }
-
-        private void bSave_Click(object sender, RoutedEventArgs e)
-        {
-            Forms.FolderBrowserDialog folderBrowser = new Forms.FolderBrowserDialog();
-            folderBrowser.ShowDialog();
         }
 
         private void cbPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ExcelReader.UploadFile();
-
             if (cbPages.SelectedIndex == 0)
             {
                 ThreatsGrid.ItemsSource = threats.GetRange(0, 20);
@@ -151,7 +142,7 @@ namespace ThreatParser
                 ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 60);
             }
 
-            page = 0;
+            page = 1;
         }
 
         private void ThreatsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -176,77 +167,44 @@ namespace ThreatParser
         }
 
         private void bForward_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             if (cbPages.SelectedIndex == 0)
             {
-                for (int i = 0; i < threats.Count/20; i++)
-                {
-                    if(i==page)
-                    {
-                        ThreatsGrid.ItemsSource = threats.GetRange(page*20, 20);
-                        ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, 60);
-                    }
-                }
+                ThreatsGrid.ItemsSource = threats.GetRange(page * 20, 20);
+                ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, 60);
             }
             if (cbPages.SelectedIndex == 1)
             {
-                for (int i = 0; i < threats.Count / 40; i++)
-                {
-                    if (i == page)
-                    {
-                        ThreatsGrid.ItemsSource = threats.GetRange(page * 40, 40);
-                        ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, 40);
-                    }
-                }
+                ThreatsGrid.ItemsSource = threats.GetRange(page * 40, 40);
+                ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, 40);
             }
             if (cbPages.SelectedIndex == 2)
             {
-                for (int i = 0; i < threats.Count / 60; i++)
-                {
-                    if (i == page)
-                    {
-                        ThreatsGrid.ItemsSource = threats.GetRange(page * 60, 60);
-                        ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, 60);
-                    }
-                }
+                ThreatsGrid.ItemsSource = threats.GetRange(page * 60, 60);
+                ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, 60);
             }
             page++;
         }
 
         private void bBack_Click(object sender, RoutedEventArgs e)
         {
-            page--;
-            if (cbPages.SelectedIndex == 0)
+            if (page >= 2)
             {
-                for (int i = 0; i < threats.Count / 20; i++)
+                page--;
+                if (cbPages.SelectedIndex == 0)
                 {
-                    if (i == page)
-                    {
-                        ThreatsGrid.ItemsSource = threats.GetRange(page * 20, 20);
-                        ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, 60);
-                    }
+                    ThreatsGrid.ItemsSource = threats.GetRange((page-1) * 20, 20);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 20, 60);
                 }
-            }
-            if (cbPages.SelectedIndex == 1)
-            {
-                for (int i = 0; i < threats.Count / 40; i++)
+                if (cbPages.SelectedIndex == 1)
                 {
-                    if (i == page)
-                    {
-                        ThreatsGrid.ItemsSource = threats.GetRange(page * 40, 40);
-                        ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, 40);
-                    }
+                    ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 40, 40);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 40, 40);
                 }
-            }
-            if (cbPages.SelectedIndex == 2)
-            {
-                for (int i = 0; i < threats.Count / 60; i++)
+                if (cbPages.SelectedIndex == 2)
                 {
-                    if (i == page)
-                    {
-                        ThreatsGrid.ItemsSource = threats.GetRange(page * 60, 60);
-                        ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, 60);
-                    }
+                    ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 60, 60);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 60, 60);
                 }
             }
         }

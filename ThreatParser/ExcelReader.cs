@@ -23,10 +23,10 @@ namespace ThreatParser
 
             while (!File.Exists(path + @"\thrlist.xlsx"))
             {
-                MessageBox.Show($"Файл не найден! Путь: {path}", "Ошибка чтения файла", 
+                MessageBox.Show($"Файл не найден! Путь: {path}", "Ошибка чтения файла",
                     MessageBoxButton.OK, MessageBoxImage.Error);
 
-                if (MessageBox.Show("Хотите изменить путь к файлу?", "Директория файла", 
+                if (MessageBox.Show("Хотите изменить путь к файлу?", "Директория файла",
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     Forms.FolderBrowserDialog folderBrowser = new Forms.FolderBrowserDialog();
@@ -36,7 +36,7 @@ namespace ThreatParser
                 else
                 {
                     path = Environment.CurrentDirectory;
-                    MessageBox.Show($"Файл будет загружен в корневую директорию: {path}","Загрузка файла",MessageBoxButton.OK,MessageBoxImage.Asterisk);
+                    MessageBox.Show($"Файл будет загружен в корневую директорию: {path}", "Загрузка файла", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
                     using (WebClient client = new WebClient())
                     {
@@ -46,7 +46,7 @@ namespace ThreatParser
                         }
                         catch (Exception)
                         {
-                            MessageBox.Show($"Не удалось загрузить файл. Проверьте подключение к интернету", 
+                            MessageBox.Show($"Не удалось загрузить файл. Проверьте подключение к интернету",
                                 "Ошибка загрузки файла", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
@@ -78,6 +78,7 @@ namespace ThreatParser
                 }
                 else
                 {
+                    //int lastRow = worksheet.Cells.Where(cell => !cell.Value.ToString().Equals("")).Last().End.Row;
                     for (int i = 3; i <= 224; i++)
                     {
                         for (int j = 1; j <= 8; j++)
@@ -100,44 +101,41 @@ namespace ThreatParser
                                     objectInfl = worksheet.Cells[i, j].Value.ToString();
                                     break;
                                 case 6:
+                                    if (int.Parse(worksheet.Cells[i, j].Value.ToString()) == 1)
                                     {
-                                        if (int.Parse(worksheet.Cells[i, j].Value.ToString()) == 1)
-                                        {
-                                            isPrivacy = true;
-                                        }
-                                        else
-                                        {
-                                            isPrivacy = false;
-                                        }
-                                        break;
+                                        isPrivacy = true;
                                     }
+                                    else
+                                    {
+                                        isPrivacy = false;
+                                    }
+                                    break;
+
                                 case 7:
+                                    if (int.Parse(worksheet.Cells[i, j].Value.ToString()) == 1)
                                     {
-                                        if (int.Parse(worksheet.Cells[i, j].Value.ToString()) == 1)
-                                        {
-                                            isIntegrity = true;
-                                        }
-                                        else
-                                        {
-                                            isIntegrity = false;
-                                        }
-                                        break;
+                                        isIntegrity = true;
                                     }
+                                    else
+                                    {
+                                        isIntegrity = false;
+                                    }
+                                    break;
+
                                 case 8:
+                                    if (int.Parse(worksheet.Cells[i, j].Value.ToString()) == 1)
                                     {
-                                        if (int.Parse(worksheet.Cells[i, j].Value.ToString()) == 1)
-                                        {
-                                            isAccessibility = true;
-                                        }
-                                        else
-                                        {
-                                            isAccessibility = false;
-                                        }
-                                        break;
+                                        isAccessibility = true;
                                     }
+                                    else
+                                    {
+                                        isAccessibility = false;
+                                    }
+                                    break;
+
                             }
                         }
-                        threats.Add(new Threat(id, name, description, source, objectInfl, isPrivacy, isIntegrity, isAccessibility));
+                        threats.Add(new Threat(id, name, description, source, objectInfl, isPrivacy, isIntegrity, isAccessibility));                       
                     }
                 }
             }

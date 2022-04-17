@@ -75,15 +75,13 @@
         </DataGrid>
 
         <Button x:Name="bUpdate" Content="Обновить данные" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Width="120" Click="bUpdate_Click" />
-        <ComboBox x:Name="cbPages" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="60" Height="20" IsReadOnly="True" SelectedIndex="0" SelectionChanged="cbPages_SelectionChanged">
+        <ComboBox x:Name="cbPages" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="42" Height="20" IsReadOnly="True" SelectedIndex="0" SelectionChanged="cbPages_SelectionChanged">
             <TextBlock>20</TextBlock>
             <TextBlock>40</TextBlock>
             <TextBlock>60</TextBlock>
         </ComboBox>
-
-        <Button x:Name="bSave" Content="Сохранить" HorizontalAlignment="Left" Margin="140,0,0,10" VerticalAlignment="Bottom" Width="70" Click="bSave_Click"/>
-        <Button x:Name="bDetailedInfo" Content="Подробные сведения" HorizontalAlignment="Right" Margin="0,0,140,10" VerticalAlignment="Bottom" Click="bDetailedInfo_Click" />
-        <Button x:Name="bForward" Content=">" HorizontalAlignment="Right" Margin="0,0,80,10" VerticalAlignment="Bottom" Width="20" Height="20" Click="bForward_Click"/>
-        <Button x:Name="bBack" Content="&lt;" HorizontalAlignment="Right" Margin="0,0,110,10" VerticalAlignment="Bottom" Height="20" Width="20" Click="bBack_Click"/>
+        <Button x:Name="bDetailedInfo" Content="Подробные сведения" HorizontalAlignment="Right" Margin="0,0,122,10" VerticalAlignment="Bottom" Click="bDetailedInfo_Click" />
+        <Button x:Name="bForward" Content=">" HorizontalAlignment="Right" Margin="0,0,62,10" VerticalAlignment="Bottom" Width="20" Height="20" Click="bForward_Click"/>
+        <Button x:Name="bBack" Content="&lt;" HorizontalAlignment="Right" Margin="0,0,92,10" VerticalAlignment="Bottom" Height="20" Width="20" Click="bBack_Click"/>
     </Grid>
 </Window>
