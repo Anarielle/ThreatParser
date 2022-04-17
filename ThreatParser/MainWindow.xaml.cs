@@ -228,7 +228,7 @@ namespace ThreatParser
                 if (cbPages.SelectedIndex == 0)
                 {
                     ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 20, 20);
-                    ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 20, 60);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 20, 20);
                 }
                 if (cbPages.SelectedIndex == 1)
                 {
