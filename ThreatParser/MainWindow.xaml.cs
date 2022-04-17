@@ -26,11 +26,13 @@ namespace ThreatParser
     {
         public static List<Threat> threats = new List<Threat>();
         public static int page = 1;
+        DownloadFile downloadFile = new DownloadFile();
 
         public MainWindow()
         {
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            ExcelReader.UploadFile();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;            
+            downloadFile.Show();
+            Hide();
             InitializeComponent();
         }
 
@@ -42,7 +44,7 @@ namespace ThreatParser
             {
                 try
                 {
-                    client.DownloadFile(ExcelReader.link, ExcelReader.path + @"\thrlist.xlsx");
+                    client.DownloadFile(DownloadFile.link, DownloadFile.path + @"\thrlist.xlsx");
                 }
                 catch (System.Net.WebException)
                 {
@@ -51,7 +53,7 @@ namespace ThreatParser
                 }
             }
 
-            ExcelReader.ReadFile(new FileInfo(ExcelReader.path + @"\thrlist.xlsx"), threatsUpdate);
+            ExcelReader.ReadFile(new FileInfo(DownloadFile.path + @"\thrlist.xlsx"), threatsUpdate);
 
             foreach (var threatUp in threatsUpdate)
             {
@@ -107,7 +109,7 @@ namespace ThreatParser
 
             if (changes.Count != 0)
             {
-                MessageBox.Show($"Обновление прошло успешно!!!\nОбновлено {changes.ToHashSet().Count} записей!");
+                MessageBox.Show($"Обновление прошло успешно!!!\nОбновлено {changes.ToHashSet().Count} записей!", "Обновление данных");
                 ListOfChanges listOfChanges = new ListOfChanges();
                 listOfChanges.listBoxChanges.ItemsSource = changes;
                 listOfChanges.Show();
@@ -118,28 +120,58 @@ namespace ThreatParser
             }
             else
             {
-                MessageBox.Show($"Обновление не требуется, у вас свежие данные.\nОбновлено {changes.ToHashSet().Count} записей!");
+                MessageBox.Show($"Обновление не требуется, у вас свежие данные.\nОбновлено {changes.ToHashSet().Count} записей!", "Обновление данных");
             }
         }
 
         private void cbPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbPages.SelectedIndex == 0)
+            if (threats.Count != 0)
             {
-                ThreatsGrid.ItemsSource = threats.GetRange(0, 20);
-                ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 20);
+                if (cbPages.SelectedIndex == 0)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(0, 20);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 20);
+                }
+
+                if (cbPages.SelectedIndex == 1)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(0, 40);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 40);
+                }
+
+                if (cbPages.SelectedIndex == 2)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(0, 60);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 60);
+                }
+                downloadFile.Close();
             }
 
-            if (cbPages.SelectedIndex == 1)
-            {
-                ThreatsGrid.ItemsSource = threats.GetRange(0, 40);
-                ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 40);
-            }
+            page = 1;            
+        }
 
-            if (cbPages.SelectedIndex == 2)
+        public void ChangePage()
+        {
+            if (threats.Count != 0)
             {
-                ThreatsGrid.ItemsSource = threats.GetRange(0, 60);
-                ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 60);
+                if (cbPages.SelectedIndex == 0)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(0, 20);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 20);
+                }
+
+                if (cbPages.SelectedIndex == 1)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(0, 40);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 40);
+                }
+
+                if (cbPages.SelectedIndex == 2)
+                {
+                    ThreatsGrid.ItemsSource = threats.GetRange(0, 60);
+                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 60);
+                }
             }
 
             page = 1;

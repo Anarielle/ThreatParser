@@ -1,0 +1,16 @@
+﻿<Window x:Class="ThreatParser.DownloadFile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThreatParser"
+        mc:Ignorable="d"
+        Title="Открытие/Загрузка файла" Height="116" Width="455">
+    <Grid>
+        <TextBox x:Name="tbPath" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="356"/>
+        <Button x:Name="bReview" Content="Обзор" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Click="bReview_Click"/>
+        <Button x:Name="bDownload" Content="Скачать" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="53" Click="bDownload_Click"/>
+        <Button x:Name="bFind" Content="Найти файл" HorizontalAlignment="Right" Margin="0,0,73,10" VerticalAlignment="Bottom" Width="76" Click="bFind_Click"/>
+
+    </Grid>
+</Window>

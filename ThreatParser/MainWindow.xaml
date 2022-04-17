@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreatParser"
         mc:Ignorable="d"
-        Title="Threat Parser" Height="470" Width="872" MinWidth="310" MinHeight="300">
+        Title="База данных угроз безопасности информации" Height="470" Width="872" MinWidth="310" MinHeight="300">
     <Grid>
         <DataGrid AutoGenerateColumns="False" ColumnWidth="Auto" IsReadOnly="True" x:Name="ThreatsGrid"  Grid.ColumnSpan="2" Margin="0,0,0,45" MouseDoubleClick="ThreatsGrid_MouseDoubleClick">
             <DataGrid.Columns>

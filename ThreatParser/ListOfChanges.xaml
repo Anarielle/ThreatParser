@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreatParser"
         mc:Ignorable="d"
-        Title="ListOfChanges" Height="312" Width="562">
+        Title="Список изменений" Height="312" Width="562">
     <Grid>
         <ListBox x:Name="listBoxChanges" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
     </Grid>

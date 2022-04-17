@@ -21,6 +21,7 @@ namespace ThreatParser
     {
         public ListOfChanges()
         {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
     }

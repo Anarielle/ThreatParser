@@ -71,11 +71,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DownloadFile.xaml.cs">
+      <DependentUpon>DownloadFile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExcelReader.cs" />
     <Compile Include="ListOfChanges.xaml.cs">
       <DependentUpon>ListOfChanges.xaml</DependentUpon>
     </Compile>
     <Compile Include="Threat.cs" />
+    <Page Include="DownloadFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ListOfChanges.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
