@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreatParser"
         mc:Ignorable="d"
-        Title="Открытие/Загрузка файла" Height="116" Width="455">
+        Title="Открытие/Загрузка файла" Height="127" Width="450" Closed="Window_Closed">
     <Grid>
-        <TextBox x:Name="tbPath" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="356"/>
-        <Button x:Name="bReview" Content="Обзор" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Click="bReview_Click"/>
+        <TextBox x:Name="tbPath" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="360"/>
+        <Button x:Name="bReview" Content="Обзор" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Click="bReview_Click" Width="43"/>
         <Button x:Name="bDownload" Content="Скачать" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="53" Click="bDownload_Click"/>
         <Button x:Name="bFind" Content="Найти файл" HorizontalAlignment="Right" Margin="0,0,73,10" VerticalAlignment="Bottom" Width="76" Click="bFind_Click"/>
 
