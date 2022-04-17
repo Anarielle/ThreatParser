@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreatParser"
         mc:Ignorable="d"
-        Title="Threat Parser" Height="450" Width="800" MinWidth="310" MinHeight="300">
+        Title="Threat Parser" Height="470" Width="872" MinWidth="310" MinHeight="300">
     <Grid>
         <DataGrid AutoGenerateColumns="False" ColumnWidth="Auto" IsReadOnly="True" x:Name="ThreatsGrid"  Grid.ColumnSpan="2" Margin="0,0,0,45" MouseDoubleClick="ThreatsGrid_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Идентификатор УБИ" Binding="{Binding Id}" MinWidth="130">
+                <DataGridTextColumn Header="Идентификатор УБИ" Binding="{Binding Id}" MinWidth="50">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
                         </Style>
+
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Наименование УБИ" Binding="{Binding Name}" MinWidth="120">
@@ -28,14 +29,14 @@
 
         <DataGrid AutoGenerateColumns="False" ColumnWidth="Auto" IsReadOnly="True" Name="ThreatsGridDetailed" Margin="0,0,0,45" Visibility="Hidden" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Идентификатор УБИ" Binding="{Binding Id}" MinWidth="130">
+                <DataGridTextColumn Header="Идентификатор УБИ" Binding="{Binding Id}" MinWidth="50">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                
+
                 <DataGridTextColumn Header="Наименование УБИ" Binding="{Binding Name}" MinWidth="120" Width="200">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -44,7 +45,7 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" MinWidth="120" Width="200">
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" MinWidth="120" Width="400">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"></Setter>
@@ -81,7 +82,8 @@
         </ComboBox>
 
         <Button x:Name="bSave" Content="Сохранить" HorizontalAlignment="Left" Margin="140,0,0,10" VerticalAlignment="Bottom" Width="70" Click="bSave_Click"/>
-        <Button x:Name="bDetailedInfo" Content="Подробные сведения" HorizontalAlignment="Right" Margin="0,0,80,10" VerticalAlignment="Bottom" Click="bDetailedInfo_Click" />
-
+        <Button x:Name="bDetailedInfo" Content="Подробные сведения" HorizontalAlignment="Right" Margin="0,0,140,10" VerticalAlignment="Bottom" Click="bDetailedInfo_Click" />
+        <Button x:Name="bForward" Content=">" HorizontalAlignment="Right" Margin="0,0,80,10" VerticalAlignment="Bottom" Width="20" Height="20" Click="bForward_Click"/>
+        <Button x:Name="bBack" Content="&lt;" HorizontalAlignment="Right" Margin="0,0,110,10" VerticalAlignment="Bottom" Height="20" Width="20" Click="bBack_Click"/>
     </Grid>
 </Window>
