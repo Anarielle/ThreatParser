@@ -16,7 +16,6 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Net;
 using Forms = System.Windows.Forms;
-using System.Threading;
 
 namespace ThreatParser
 {
@@ -183,13 +182,11 @@ namespace ThreatParser
                 {
                     ThreatsGrid.ItemsSource = threats.GetRange(page * 20, threats.Count - page * 20);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, threats.Count - page * 20);
-                    Thread.Sleep(10);
                 }
                 else
                 {
                     ThreatsGrid.ItemsSource = threats.GetRange(page * 20, 20);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 20, 20);
-                    Thread.Sleep(10);
                 }
                 page++;
             }
@@ -199,13 +196,11 @@ namespace ThreatParser
                 {
                     ThreatsGrid.ItemsSource = threats.GetRange(page * 40, threats.Count - page * 40);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, threats.Count - page * 40);
-                    Thread.Sleep(10);
                 }
                 else
                 {
                     ThreatsGrid.ItemsSource = threats.GetRange(page * 40, 40);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 40, 40);
-                    Thread.Sleep(10);
                 }
                 page++;
             }
@@ -215,13 +210,11 @@ namespace ThreatParser
                 {
                     ThreatsGrid.ItemsSource = threats.GetRange(page * 60, threats.Count - page * 60);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, threats.Count - page * 60);
-                    Thread.Sleep(10);
                 }
                 else
                 {
                     ThreatsGrid.ItemsSource = threats.GetRange(page * 60, 60);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(page * 60, 60);
-                    Thread.Sleep(10);
                 }
                 page++;
             }
@@ -237,17 +230,14 @@ namespace ThreatParser
                     case 0:
                         ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 20, 20);
                         ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 20, 20);
-                        Thread.Sleep(10);
                         break;
                     case 1:
                         ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 40, 40);
                         ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 40, 40);
-                        Thread.Sleep(10);
                         break;
                     case 2:
-                        ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 60, 60);                        
+                        ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 60, 60);
                         ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 60, 60);
-                        Thread.Sleep(10);
                         break;
                 }                
             }
@@ -257,7 +247,5 @@ namespace ThreatParser
         {
             Application.Current.Shutdown();
         }
-
-        
     }
 }
