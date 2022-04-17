@@ -35,6 +35,7 @@ namespace ThreatParser
             Hide();
             
             InitializeComponent();
+            
         }
 
         private void bUpdate_Click(object sender, RoutedEventArgs e)
@@ -56,7 +57,7 @@ namespace ThreatParser
                 }
             }
 
-            ExcelReader.ReadFile(new FileInfo(DownloadFile.path + @"\thrlist.xlsx"), threatsUpdate);
+            threatsUpdate = ExcelReader.ReadFile(new FileInfo(DownloadFile.path + @"\thrlist.xlsx"));
 
             foreach (var threatUp in threatsUpdate)
             {
@@ -149,37 +150,9 @@ namespace ThreatParser
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 60);
                 }
                 downloadFile.Hide();
-            }
-
+            }            
             page = 1;
         }
-
-        public void ChangePage()
-        {
-            if (threats.Count != 0)
-            {
-                if (cbPages.SelectedIndex == 0)
-                {
-                    ThreatsGrid.ItemsSource = threats.GetRange(0, 20);
-                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 20);
-                }
-
-                if (cbPages.SelectedIndex == 1)
-                {
-                    ThreatsGrid.ItemsSource = threats.GetRange(0, 40);
-                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 40);
-                }
-
-                if (cbPages.SelectedIndex == 2)
-                {
-                    ThreatsGrid.ItemsSource = threats.GetRange(0, 60);
-                    ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 60);
-                }
-            }
-
-            page = 1;
-        }
-
         private void ThreatsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show($"{ThreatsGrid.SelectedItem as Threat}");
@@ -274,5 +247,7 @@ namespace ThreatParser
         {
             Application.Current.Shutdown();
         }
+
+        
     }
 }

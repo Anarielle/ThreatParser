@@ -49,9 +49,12 @@ namespace ThreatParser
             else
             {
                 FileInfo newFile = new FileInfo(path + @"\thrlist.xlsx");
-                ExcelReader.ReadFile(newFile, MainWindow.threats);
-                new MainWindow().Show();
-                Hide();
+                MainWindow.threats = ExcelReader.ReadFile(newFile);
+                if (MainWindow.threats != null)
+                {
+                    new MainWindow().Show();
+                    Hide();
+                }
             }
         }
 
@@ -63,16 +66,19 @@ namespace ThreatParser
                 {
                     client.DownloadFile(link, path + @"\thrlist.xlsx");
                     FileInfo newFile = new FileInfo(path + @"\thrlist.xlsx");
-                    ExcelReader.ReadFile(newFile, MainWindow.threats);
-                    new MainWindow().Show();
-                    Hide();
+                    MainWindow.threats = ExcelReader.ReadFile(newFile);
+                    if (MainWindow.threats != null)
+                    {
+                        new MainWindow().Show();
+                        Hide();
+                    }
                 }
                 catch (Exception)
                 {
                     MessageBox.Show($"Не удалось загрузить файл. Возможно проблемы с подключением к интернету или с доступом к сайту",
                         "Ошибка загрузки файла", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }            
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)

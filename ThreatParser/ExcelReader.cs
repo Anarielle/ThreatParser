@@ -14,8 +14,9 @@ namespace ThreatParser
 {
     internal class ExcelReader
     {   
-        public static void ReadFile(FileInfo newFile, List<Threat> threats)
+        public static List<Threat> ReadFile(FileInfo newFile)
         {
+            List<Threat> threats = new List<Threat>();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using (ExcelPackage excelPackage = new ExcelPackage(newFile))
             {
@@ -31,9 +32,10 @@ namespace ThreatParser
                 bool isAccessibility = false;
 
                 if (worksheet == null)
-                {
+                {                   
                     MessageBox.Show($"Не удалось прочитать файл.\nПожалуйста загрузите файл заново или " +
-                        $"укажите директорию к другой копии файла", "Ошибка чтения файла", MessageBoxButton.OK, MessageBoxImage.Error);   
+                        $"укажите директорию к другой копии файла", "Ошибка чтения файла", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return null;
                 }
                 else
                 {
@@ -97,6 +99,7 @@ namespace ThreatParser
                     }
                 }
             }
+            return threats;
         }
 
     }
