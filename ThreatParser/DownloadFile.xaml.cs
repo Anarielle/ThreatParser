@@ -51,7 +51,7 @@ namespace ThreatParser
                 FileInfo newFile = new FileInfo(path + @"\thrlist.xlsx");
                 ExcelReader.ReadFile(newFile, MainWindow.threats);
                 new MainWindow().Show();
-                Close();
+                Hide();
             }
         }
 
@@ -65,7 +65,7 @@ namespace ThreatParser
                     FileInfo newFile = new FileInfo(path + @"\thrlist.xlsx");
                     ExcelReader.ReadFile(newFile, MainWindow.threats);
                     new MainWindow().Show();
-                    Close();
+                    Hide();
                 }
                 catch (Exception)
                 {

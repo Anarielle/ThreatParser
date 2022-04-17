@@ -48,8 +48,9 @@ namespace ThreatParser
                 }
                 catch (System.Net.WebException)
                 {
-                    MessageBox.Show($"Не удалось загрузить файл.\nПожалуйста закройте файл Excel",
-                        "Ошибка загрузки файла", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Не удалось обновить файл.\nВозможно проблемы с подключением к интернету или с доступом к сайту." +
+                        $"\nЕсли у вас открыт текущий файл Excel, пожалуйста закройте его и повторите попытку",
+                        "Ошибка обновления файла", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -145,7 +146,7 @@ namespace ThreatParser
                     ThreatsGrid.ItemsSource = threats.GetRange(0, 60);
                     ThreatsGridDetailed.ItemsSource = threats.GetRange(0, 60);
                 }
-                downloadFile.Close();
+                downloadFile.Hide();
             }
 
             page = 1;            
