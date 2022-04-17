@@ -122,12 +122,29 @@ namespace ThreatParser
         private void cbPages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {            
             ThreatsGrid.ItemsSource = threats;
+            ThreatsGridDetailed.ItemsSource = threats;
             
         }
 
         private void ThreatsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show($"{ThreatsGrid.SelectedItem as Threat}");
+        }
+
+        private void bDetailedInfo_Click(object sender, RoutedEventArgs e)
+        {
+            if (ThreatsGrid.IsVisible)
+            {
+                ThreatsGrid.Visibility = Visibility.Hidden;
+                ThreatsGridDetailed.Visibility = Visibility.Visible;
+                bDetailedInfo.Content = "Краткие сведения";
+            }
+            else
+            {
+                ThreatsGrid.Visibility = Visibility.Visible;
+                ThreatsGridDetailed.Visibility = Visibility.Hidden;
+                bDetailedInfo.Content = "Подробные сведения";
+            }
         }
     }
 }

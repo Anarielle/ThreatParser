@@ -25,6 +25,54 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <DataGrid AutoGenerateColumns="False" ColumnWidth="Auto" IsReadOnly="True" Name="ThreatsGridDetailed" Margin="0,0,0,45" Visibility="Hidden" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Идентификатор УБИ" Binding="{Binding Id}" MinWidth="130">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Header="Наименование УБИ" Binding="{Binding Name}" MinWidth="120" Width="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" MinWidth="120" Width="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Источник угрозы (характеристика и потенциал нарушителя)" Binding="{Binding Source}" MinWidth="120" Width="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Объект воздействия" Binding="{Binding Object}" MinWidth="120" Width="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Нарушение конфиденциальности" Binding="{Binding isBreachPrivacy}"/>
+                <DataGridCheckBoxColumn Header="Нарушение целостности" Binding="{Binding isBreachIntegrity}"/>
+                <DataGridCheckBoxColumn Header="Нарушение доступности" Binding="{Binding isBreachAccess}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
         <Button x:Name="bUpdate" Content="Обновить данные" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Width="120" Click="bUpdate_Click" />
         <ComboBox x:Name="cbPages" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="60" Height="20" IsReadOnly="True" SelectedIndex="0" SelectionChanged="cbPages_SelectionChanged">
             <TextBlock>20</TextBlock>
@@ -33,6 +81,7 @@
         </ComboBox>
 
         <Button x:Name="bSave" Content="Сохранить" HorizontalAlignment="Left" Margin="140,0,0,10" VerticalAlignment="Bottom" Width="70" Click="bSave_Click"/>
+        <Button x:Name="bDetailedInfo" Content="Подробные сведения" HorizontalAlignment="Right" Margin="0,0,80,10" VerticalAlignment="Bottom" Click="bDetailedInfo_Click" />
 
     </Grid>
 </Window>
