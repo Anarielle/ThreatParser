@@ -42,6 +42,7 @@ namespace ThreatParser
         {
             List<Threat> threatsUpdate = new List<Threat>();
             List<string> changes = new List<string>();
+            HashSet<int> id = new HashSet<int>();
             using (WebClient client = new WebClient())
             {
                 try
@@ -70,42 +71,49 @@ namespace ThreatParser
                             changes.Add($"Идентификатор записи: {threat.Id}\n" +
                                 $"Старая запись\tНаименование УБИ: {threat.Name}\n" +
                                 $"Новая запись \tНаименование УБИ: {threatUp.Name}");
+                            id.Add(threat.Id);
                         }
                         if (threat.Description != threatUp.Description)
                         {
                             changes.Add($"Идентификатор записи: {threat.Id}\n" +
                                 $"Старая запись:\tОписание: {threat.Description}\n" +
                                 $"Новая запись: \tОписание: {threatUp.Description}");
+                            id.Add(threat.Id);
                         }
                         if (threat.Source != threatUp.Source)
                         {
                             changes.Add($"Идентификатор записи: {threat.Id}\n" +
                                 $"Старая запись:\tИсточник угрозы: {threat.Source}\n" +
                                 $"Новая запись: \tИсточник угрозы: {threatUp.Source}");
+                            id.Add(threat.Id);
                         }
                         if (threat.Object != threatUp.Object)
                         {
                             changes.Add($"Идентификатор записи: {threat.Id}\n" +
                                 $"Старая запись:\tОбъект воздействия: {threat.Object}\n" +
                                 $"Новая запись: \tОбъект воздействия: {threatUp.Object}");
+                            id.Add(threat.Id);
                         }
                         if (threat.isBreachPrivacy != threatUp.isBreachPrivacy)
                         {
                             changes.Add($"Идентификатор записи: {threat.Id}\n" +
                                 $"Старая запись:\tНарушение конфиденциальности: {(threat.isBreachPrivacy ? "да" : "нет")}\n" +
                                 $"Новая запись: \tНарушение конфиденциальности: {(threatUp.isBreachPrivacy ? "да" : "нет")}");
+                            id.Add(threat.Id);
                         }
                         if (threat.isBreachIntegrity != threatUp.isBreachIntegrity)
                         {
                             changes.Add($"Идентификатор записи: {threat.Id}\n" +
                                 $"Старая запись:\tНарушение целостности: {(threat.isBreachIntegrity ? "да" : "нет")}\n" +
                                 $"Новая запись: \tНарушение целостности: {(threatUp.isBreachIntegrity ? "да" : "нет")}");
+                            id.Add(threat.Id);
                         }
                         if (threat.isBreachAccess != threatUp.isBreachAccess)
                         {
                             changes.Add($"Идентификатор записи: {threat.Id}\n" +
                                 $"Старая запись:\tНарушение доступности: {(threat.isBreachAccess ? "да" : "нет")}\n" +
                                 $"Новая запись: \tНарушение доступности: {(threatUp.isBreachAccess ? "да" : "нет")}");
+                            id.Add(threat.Id);
                         }
                     }
                 }
@@ -113,7 +121,7 @@ namespace ThreatParser
 
             if (changes.Count != 0)
             {
-                MessageBox.Show($"Обновление прошло успешно!!!\nОбновлено {changes.ToHashSet().Count} записей!", "Обновление данных");
+                MessageBox.Show($"Обновление прошло успешно!!!\nОбновлено {id.Count} записей!", "Обновление данных");
                 ListOfChanges listOfChanges = new ListOfChanges();
                 listOfChanges.listBoxChanges.ItemsSource = changes;
                 listOfChanges.Show();
