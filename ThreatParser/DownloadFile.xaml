@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreatParser"
         mc:Ignorable="d"
-        Title="Открытие/Загрузка файла" Height="180" Width="520" Closed="Window_Closed" MaxWidth="520" MaxHeight="180">
+        Title="Открытие/Загрузка файла" Height="180" Width="520" Closed="Window_Closed" MaxWidth="600" MaxHeight="180" MinHeight="150" MinWidth="400">
     <Grid>
-        <TextBox x:Name="tbPath" HorizontalAlignment="Left" Margin="10,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="431" Height="20"/>
-        <Button x:Name="bReview" Content="Обзор" HorizontalAlignment="Right" Margin="0,48,10,0" VerticalAlignment="Top" Click="bReview_Click" Width="43"/>
+        <TextBox x:Name="tbPath" HorizontalAlignment="Left" Margin="15,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="431" Height="20"/>
+        <Button x:Name="bReview" Content="Обзор" HorizontalAlignment="Right" Margin="0,50,10,0" VerticalAlignment="Top" Click="bReview_Click" Width="43"/>
         <Button x:Name="bDownload" Content="Скачать" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="53" Click="bDownload_Click"/>
         <Button x:Name="bFind" Content="Найти файл" HorizontalAlignment="Right" Margin="0,0,73,10" VerticalAlignment="Bottom" Width="76" Click="bFind_Click"/>
         <Label Content="Укажите путь к существующему файлу или путь, по которому вы хотите загрузить файл"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="28" Width="494"/>
