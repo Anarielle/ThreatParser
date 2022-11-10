@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreatParser"
         mc:Ignorable="d"
-        Title="Открытие/Загрузка файла" Height="180" Width="520" Closed="Window_Closed" MaxWidth="600" MaxHeight="180" MinHeight="150" MinWidth="400">
+        Title="Открытие/Загрузка файла" Height="170" Width="450" Closed="Window_Closed" MaxWidth="600" MaxHeight="200" MinHeight="165" MinWidth="400">
     <Grid>
-        <TextBox x:Name="tbPath" HorizontalAlignment="Left" Margin="15,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="431" Height="20"/>
-        <Button x:Name="bReview" Content="Обзор" HorizontalAlignment="Right" Margin="0,50,10,0" VerticalAlignment="Top" Click="bReview_Click" Width="43"/>
-        <Button x:Name="bDownload" Content="Скачать" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="53" Click="bDownload_Click"/>
-        <Button x:Name="bFind" Content="Найти файл" HorizontalAlignment="Right" Margin="0,0,73,10" VerticalAlignment="Bottom" Width="76" Click="bFind_Click"/>
-        <Label Content="Укажите путь к существующему файлу или путь, по которому вы хотите загрузить файл"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="28" Width="494"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="75"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="tbPath" Margin="15,0,10,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="20"/>
+        <Button x:Name="bReview" Content="Обзор" HorizontalAlignment="Center" VerticalAlignment="Center" Click="bReview_Click" Width="54" Grid.Column="1" Height="20"/>
+        <Button x:Name="bDownload" Content="Скачать" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="54" Click="bDownload_Click" Height="20" Grid.Column="1"/>
+        <Button x:Name="bFind" Content="Найти файл" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="76" Click="bFind_Click" Height="20"/>
+        <TextBox Margin="15,15,10,0" TextWrapping="Wrap" Text="Укажите путь к существующему файлу или путь, по которому вы хотите загрузить файл" VerticalAlignment="Top" BorderThickness="0" Height="37"/>
     </Grid>
 </Window>
