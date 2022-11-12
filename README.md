@@ -1,4 +1,4 @@
-# ThreatParser
+# Threat Parser
 
 The application automatically creates a local database of information threats by downloading and then parsing information from the official threat database of the FSTEC of Russia.
 
