@@ -26,7 +26,7 @@ namespace ThreatParser
     {
         internal static List<Threat> threats = new List<Threat>();
         private int page = 1;
-        DownloadFile downloadFile = new DownloadFile();
+        readonly DownloadFile downloadFile = new DownloadFile();
 
         public MainWindow()
         {
