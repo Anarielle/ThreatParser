@@ -47,7 +47,7 @@ namespace ThreatParser
             {
                 try
                 {
-                    client.DownloadFile(DownloadFile.link, DownloadFile.path + @"\thrlist.xlsx");
+                    client.DownloadFile(downloadFile.link, downloadFile.path + @"\thrlist.xlsx");
                 }
                 catch (System.Net.WebException)
                 {
@@ -58,7 +58,7 @@ namespace ThreatParser
                 }
             }
 
-            threatsUpdate = ExcelReader.ReadFile(new FileInfo(DownloadFile.path + @"\thrlist.xlsx"));
+            threatsUpdate = ExcelReader.ReadFile(new FileInfo(downloadFile.path + @"\thrlist.xlsx"));
 
             foreach (var threatUp in threatsUpdate)
             {
