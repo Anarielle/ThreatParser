@@ -82,7 +82,7 @@ namespace ThreatParser
                                     }
                                     break;
 
-                                case 8:
+                                default:
                                     if (int.Parse(worksheet.Cells[i, j].Value.ToString()) == 1)
                                     {
                                         isAccessibility = true;
@@ -92,9 +92,6 @@ namespace ThreatParser
                                         isAccessibility = false;
                                     }
                                     break;
-                                default:
-                                    throw new Exception();
-
                             }
                         }
                         threats.Add(new Threat(id, name, description, source, objectInfl, isPrivacy, isIntegrity, isAccessibility));                       

@@ -25,7 +25,7 @@ namespace ThreatParser
     public partial class MainWindow : Window
     {
         internal static List<Threat> threats = new List<Threat>();
-        private static int page = 1;
+        private int page = 1;
         DownloadFile downloadFile = new DownloadFile();
 
         public MainWindow()
@@ -243,12 +243,10 @@ namespace ThreatParser
                         ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 40, 40);
                         ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 40, 40);
                         break;
-                    case 2:
+                    default:
                         ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 60, 60);
                         ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 60, 60);
                         break;
-                    default:
-                        throw new Exception();
                 }                
             }
         }
