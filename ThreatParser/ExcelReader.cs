@@ -93,7 +93,7 @@ namespace ThreatParser
                                     }
                                     break;
                                 default:
-                                    break;
+                                    throw new Exception();
 
                             }
                         }

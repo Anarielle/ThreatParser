@@ -248,7 +248,7 @@ namespace ThreatParser
                         ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 60, 60);
                         break;
                     default:
-                        break;
+                        throw new Exception();
                 }                
             }
         }
