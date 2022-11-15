@@ -22,8 +22,8 @@ namespace ThreatParser
     /// </summary>
     public partial class DownloadFile : Window
     {
-        public static Uri link = new Uri("https://bdu.fstec.ru/files/documents/thrlist.xlsx");
-        public static string path = Environment.CurrentDirectory;
+        internal readonly static Uri link = new Uri("https://bdu.fstec.ru/files/documents/thrlist.xlsx");
+        internal static string path = Environment.CurrentDirectory;
         public DownloadFile()
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;

@@ -92,6 +92,8 @@ namespace ThreatParser
                                         isAccessibility = false;
                                     }
                                     break;
+                                default:
+                                    break;
 
                             }
                         }

@@ -24,8 +24,8 @@ namespace ThreatParser
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static List<Threat> threats = new List<Threat>();
-        public static int page = 1;
+        internal static List<Threat> threats = new List<Threat>();
+        private static int page = 1;
         DownloadFile downloadFile = new DownloadFile();
 
         public MainWindow()
@@ -40,7 +40,7 @@ namespace ThreatParser
 
         private void bUpdate_Click(object sender, RoutedEventArgs e)
         {
-            List<Threat> threatsUpdate = new List<Threat>();
+            List<Threat> threatsUpdate;
             List<string> changes = new List<string>();
             HashSet<int> id = new HashSet<int>();
             using (WebClient client = new WebClient())
@@ -246,6 +246,8 @@ namespace ThreatParser
                     case 2:
                         ThreatsGrid.ItemsSource = threats.GetRange((page - 1) * 60, 60);
                         ThreatsGridDetailed.ItemsSource = threats.GetRange((page - 1) * 60, 60);
+                        break;
+                    default:
                         break;
                 }                
             }
