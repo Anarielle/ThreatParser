@@ -17,7 +17,7 @@ Displays short information about threats in the form of a threat ID and name.
 Each information security threat record includes the following information:
 
 -   identifier
-  - name
+    - name
 - description
 - source
 - object of influence
