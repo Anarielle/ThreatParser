@@ -3,7 +3,8 @@
 
 The application automatically creates a local database of information threats by downloading and then parsing information from the official threat database of the FSTEC of Russia.
 
-## Viewing the general list of threats
+## Features
+### Viewing the general list of threats
 
 Displays short information about threats in the form of a threat ID and name.
 
@@ -13,7 +14,7 @@ Displays short information about threats in the form of a threat ID and name.
 
 </div>
 
-## View all details about each threat
+### View all details about each threat
 
 Each information security threat record includes the following information:
 
@@ -32,7 +33,7 @@ Each information security threat record includes the following information:
 
 </div>
 
-## Update information
+### Update information
 
 Automatic updating of information (at the request of the user), as a result of which the program displays a report on updated records.
 
@@ -41,3 +42,10 @@ Automatic updating of information (at the request of the user), as a result of w
 ![Alt text](./Resources/Parser_update_info.png) 
 
 </div>
+
+## Technologies
+-   .NET Fraemwork 4.7.2
+-   WPF
+-   C#
+-   EPPlus library version 6.0
+
