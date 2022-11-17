@@ -48,4 +48,3 @@ Automatic updating of information (at the request of the user), as a result of w
 -   WPF
 -   C#
 -   EPPlus library version 6.0
-
